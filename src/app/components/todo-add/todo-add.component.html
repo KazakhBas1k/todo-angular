@@ -1,0 +1,22 @@
+<div class="wrapper">
+  <div class="add-container">
+    <div class="add-top">
+      <h2>ToDo</h2>
+      <button (click)="close()"><img src="assets/svg/close.svg"></button>
+    </div>
+    <div class="add-form">
+      <input
+        type="text"
+        placeholder="Title"
+        [(ngModel)]="title"
+      >
+      <select required [(ngModel)]="priority">
+        <option value="" disabled selected>Category</option>
+        <option value="High">High</option>
+        <option value="Medium">Medium</option>
+        <option value="Low">Low</option>
+      </select>
+      <button (click)="addItem()">Create</button>
+    </div>
+  </div>
+</div>

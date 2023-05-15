@@ -1,0 +1,14 @@
+<div class="todo-item">
+  <div class="item-info">
+    <p>{{item.title}}</p>
+    <span [ngClass]="{
+      high: item.priority == 'High',
+      medium: item.priority == 'Medium',
+      low: item.priority == 'Low'
+    }">{{item.priority}}</span>
+  </div>
+  <div class="item-edit">
+    <button class="edit-btn"><img src="./assets/svg/edit.svg"></button>
+    <button class="delete-btn" (click)="delete()"><img src="./assets/svg/delete.svg"></button>
+  </div>
+</div>

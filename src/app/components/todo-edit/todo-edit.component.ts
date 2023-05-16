@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, Output, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, Output, OnInit, ContentChild, ElementRef, ViewChild} from '@angular/core';
 import {ToDoItem} from "../../app.component";
 
 @Component({
@@ -7,23 +7,35 @@ import {ToDoItem} from "../../app.component";
   styleUrls: ['./todo-edit.component.scss']
 })
 export class TodoEditComponent implements OnInit {
-  @Input() item!: ToDoItem;
+  @Input() item!: ToDoItem
   @Output() onClose = new EventEmitter
   @Output() onAdd: EventEmitter<ToDoItem> = new EventEmitter<ToDoItem>()
+  @ContentChild('index') index!: ElementRef
+  @ViewChild('input') input!: ElementRef
   newItem: ToDoItem = {
+    id: 1,
     title: "",
-    priority: "",
     status: false,
-    id: 1
+    priority: "",
   }
+  isNotChanged: boolean = true;
   changeItem() {
-    this.onAdd.emit(this.newItem)
-    this.close()
+    if (this.isNotChanged) {
+      alert("Изменений не было")
+      this.input.nativeElement.focus()
+    } else {
+      this.onAdd.emit(this.newItem)
+      this.close()
+      alert(`${this.newItem.id}-й элемент был изменен`)
+    }
   }
   close() {
     this.onClose.emit()
   }
 
+  onChange() {
+    this.isNotChanged = false;
+  }
   ngOnInit() {
     this.newItem.title = this.item.title
     this.newItem.priority = this.item.priority

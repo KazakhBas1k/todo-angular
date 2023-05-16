@@ -1,7 +1,7 @@
 <div class="todo-item">
   <div class="item-info">
     <p [ngStyle]="{
-      textDecoration: (item.status) ? 'line-through' : 'none'
+      textDecoration: item.status ? 'line-through' : 'none'
     }">{{item.title}}</p>
     <span [ngClass]="{
       high: item.priority == 'High',
@@ -19,4 +19,14 @@
   *ngIf="isEditOpen"
   (onClose)="toggleEdit()"
   (onAdd)="updateItem($event)"
-></app-todo-edit>
+>
+  <p
+    #index
+    [ngStyle]="{
+    fontFamily: 'Exo 2',
+    fontWeight: '700',
+    fontSize: '20px',
+    lineHeight: '32px',
+    }"
+  >#{{item.id}}</p>
+</app-todo-edit>

@@ -15,7 +15,6 @@ export class TodoListItemComponent {
     this.item = newItem
   }
   delete() {
-    console.log(this.item)
     this.onDelete.emit(this.item.id)
   }
   toggleEdit() {

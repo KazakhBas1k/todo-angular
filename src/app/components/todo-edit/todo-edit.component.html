@@ -1,7 +1,8 @@
 <div class="wrapper">
   <div class="edit-container">
     <div class="edit-top">
-      <h2>ToDo</h2>
+      <div class="item-counter"><h2>ToDo</h2>
+        <ng-content></ng-content></div>
       <button (click)="close()"><img src="assets/svg/close.svg"></button>
     </div>
     <div class="add-form">
@@ -9,10 +10,13 @@
         type="text"
         placeholder="Title"
         [(ngModel)]="newItem.title"
+        (change)="onChange()"
+        #input
       >
       <select
         required
         [(ngModel)]="newItem.priority"
+        (change)="onChange()"
       >
         <option value="" disabled selected>Category</option>
         <option value="High">High</option>
@@ -22,10 +26,11 @@
       <select
         required
         [(ngModel)]="newItem.status"
+        (change)="onChange()"
       >
         <option value="" disabled selected>Status</option>
-        <option value="false">Not Done</option>
-        <option value="true">Done</option>
+        <option [ngValue]="false">Not Done</option>
+        <option [ngValue]="true">Done</option>
       </select>
       <button (click)="changeItem()">Change</button>
     </div>

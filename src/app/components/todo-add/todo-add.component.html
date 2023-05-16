@@ -9,8 +9,13 @@
         type="text"
         placeholder="Title"
         [(ngModel)]="title"
+        #input
       >
-      <select required [(ngModel)]="priority">
+      <select
+        required
+        [(ngModel)]="priority"
+        #select
+      >
         <option value="" disabled selected>Category</option>
         <option value="High">High</option>
         <option value="Medium">Medium</option>

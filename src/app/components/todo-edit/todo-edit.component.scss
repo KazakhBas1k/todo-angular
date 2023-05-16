@@ -23,11 +23,16 @@
     padding: 16px 20px;
     border-bottom: 1px solid #E5F2FF;
 
-    h2 {
-      font-family: 'Exo 2';
-      font-weight: 700;
-      font-size: 20px;
-      line-height: 32px;
+    .item-counter {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      h2 {
+        font-family: 'Exo 2';
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 32px;
+      }
     }
   }
 

@@ -2,20 +2,32 @@
   <div class="edit-container">
     <div class="edit-top">
       <h2>ToDo</h2>
-      <button><img src="assets/svg/close.svg"></button>
+      <button (click)="close()"><img src="assets/svg/close.svg"></button>
     </div>
     <div class="add-form">
       <input
         type="text"
         placeholder="Title"
+        [(ngModel)]="newItem.title"
       >
-      <select required >
+      <select
+        required
+        [(ngModel)]="newItem.priority"
+      >
         <option value="" disabled selected>Category</option>
         <option value="High">High</option>
         <option value="Medium">Medium</option>
         <option value="Low">Low</option>
       </select>
-      <button>Create</button>
+      <select
+        required
+        [(ngModel)]="newItem.status"
+      >
+        <option value="" disabled selected>Status</option>
+        <option value="false">Not Done</option>
+        <option value="true">Done</option>
+      </select>
+      <button (click)="changeItem()">Change</button>
     </div>
   </div>
 </div>

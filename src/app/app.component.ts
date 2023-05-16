@@ -18,8 +18,7 @@ export class AppComponent {
     {id: 3, title: "Dinner with bae", status: false, priority: "Low"}
   ]
   isAddOpen: boolean = false;
-  isEditOpen: boolean = false;
-  OpenClose() {
+  toggleAdd() {
     this.isAddOpen = !this.isAddOpen
   }
 

@@ -9,9 +9,16 @@ import { ToDoItem } from "../../app.component";
 export class TodoListItemComponent {
   @Input() item!: ToDoItem
   @Output() onDelete: EventEmitter<number> = new EventEmitter<number>()
+  isEditOpen: boolean = false;
 
+  updateItem(newItem: ToDoItem) {
+    this.item = newItem
+  }
   delete() {
     console.log(this.item)
     this.onDelete.emit(this.item.id)
+  }
+  toggleEdit() {
+    this.isEditOpen = !this.isEditOpen
   }
 }

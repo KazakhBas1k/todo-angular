@@ -1,6 +1,8 @@
 <div class="todo-item">
   <div class="item-info">
-    <p>{{item.title}}</p>
+    <p [ngStyle]="{
+      textDecoration: (item.status) ? 'line-through' : 'none'
+    }">{{item.title}}</p>
     <span [ngClass]="{
       high: item.priority == 'High',
       medium: item.priority == 'Medium',
@@ -8,7 +10,13 @@
     }">{{item.priority}}</span>
   </div>
   <div class="item-edit">
-    <button class="edit-btn"><img src="./assets/svg/edit.svg"></button>
+    <button class="edit-btn" (click)="toggleEdit()"><img src="./assets/svg/edit.svg"></button>
     <button class="delete-btn" (click)="delete()"><img src="./assets/svg/delete.svg"></button>
   </div>
 </div>
+<app-todo-edit
+  [item]="item"
+  *ngIf="isEditOpen"
+  (onClose)="toggleEdit()"
+  (onAdd)="updateItem($event)"
+></app-todo-edit>

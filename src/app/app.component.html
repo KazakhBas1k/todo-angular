@@ -9,12 +9,9 @@
   </div>
   <app-todo-add
     *ngIf="isAddOpen"
-    (onClose)="OpenClose()"
+    (onClose)="toggleAdd()"
     (onAdd)="updateItems($event)"
     [lastId] = "items.length + 1"
   ></app-todo-add>
-  <app-todo-edit
-    *ngIf="isEditOpen"
-  ></app-todo-edit>
-  <button (click)="OpenClose()" class="add-btn"><img src="assets/svg/add.svg"></button>
+  <button (click)="toggleAdd()" class="add-btn"><img src="assets/svg/add.svg"></button>
 </div>

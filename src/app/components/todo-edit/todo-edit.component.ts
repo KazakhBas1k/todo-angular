@@ -10,13 +10,14 @@ export class TodoEditComponent implements OnInit {
   @Input() item!: ToDoItem
   @Output() onClose = new EventEmitter
   @Output() onAdd: EventEmitter<ToDoItem> = new EventEmitter<ToDoItem>()
-  @ContentChild('index') index!: ElementRef
   @ViewChild('input') input!: ElementRef
   newItem: ToDoItem = {
     id: 1,
     title: "",
     status: false,
     priority: "",
+    createdDate: new Date(),
+    deadline: new Date(),
   }
   isNotChanged: boolean = true;
   changeItem() {

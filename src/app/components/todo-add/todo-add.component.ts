@@ -1,5 +1,6 @@
 import {Component, ElementRef, EventEmitter, Input, Output, ViewChild} from '@angular/core';
 import {ToDoItem} from "../../app.component";
+import {style} from "@angular/animations";
 
 @Component({
   selector: 'app-todo-add',
@@ -15,16 +16,17 @@ export class TodoAddComponent {
   title: string = ""
   priority: string = "";
   status: boolean = false;
+  deadline!: Date;
 
   close() {
     this.onClose.emit()
   }
 
   addItem() {
-    if(!(this.title.trim()) && !(this.priority.trim())) {
+    if (!(this.title.trim()) && !(this.priority.trim())) {
       this.input.nativeElement.focus();
       alert("Заполните заголовок и Выберите приоритет!")
-    } else if((this.title.trim()) && !(this.priority.trim())) {
+    } else if ((this.title.trim()) && !(this.priority.trim())) {
       alert("Выберите приоритет!")
       this.select.nativeElement.focus();
     } else if (!(this.title.trim()) && (this.priority.trim())) {
@@ -35,7 +37,9 @@ export class TodoAddComponent {
         title: this.title,
         priority: this.priority,
         status: this.status,
-        id: this.lastId
+        id: this.lastId,
+        createdDate: new Date(),
+        deadline: this.deadline,
       }
       this.onAdd.emit(item)
       this.title = this.priority = '';
@@ -44,4 +48,6 @@ export class TodoAddComponent {
   }
   constructor() {
   }
+
+  protected readonly style = style;
 }

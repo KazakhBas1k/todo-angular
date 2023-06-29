@@ -5,6 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "move": "move dist/to-do/index.html dist",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },

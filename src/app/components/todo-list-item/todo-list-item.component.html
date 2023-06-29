@@ -1,4 +1,4 @@
-<div class="todo-item">
+<div class="todo-item" (click)="infoToggle()">
   <div class="item-info">
     <p [ngStyle]="{
       textDecoration: item.status ? 'line-through' : 'none'
@@ -9,24 +9,30 @@
       low: item.priority == 'Low'
     }">{{item.priority}}</span>
   </div>
-  <div class="item-edit">
+  <div class="item-edit" (click)="$event.stopPropagation()">
     <button class="edit-btn" (click)="toggleEdit()"><img src="./assets/svg/edit.svg"></button>
     <button class="delete-btn" (click)="delete()"><img src="./assets/svg/delete.svg"></button>
   </div>
 </div>
-<app-todo-edit
-  [item]="item"
+<app-popup
+  *ngIf="isInfoOpen"
+  (onClose)="infoToggle()"
+>
+  <app-todo-info
+    [item]="item"
+    *ngIf="isInfoOpen"
+  ></app-todo-info>
+</app-popup>
+<app-popup
   *ngIf="isEditOpen"
   (onClose)="toggleEdit()"
-  (onAdd)="updateItem($event)"
+  [id]="Number(item.id)"
 >
-  <p
-    #index
-    [ngStyle]="{
-    fontFamily: 'Exo 2',
-    fontWeight: '700',
-    fontSize: '20px',
-    lineHeight: '32px',
-    }"
-  >#{{item.id}}</p>
-</app-todo-edit>
+  <app-todo-edit
+    [item]="item"
+    *ngIf="isEditOpen"
+    (onClose)="toggleEdit()"
+    (onAdd)="updateItem($event)"
+  >
+  </app-todo-edit>
+</app-popup>

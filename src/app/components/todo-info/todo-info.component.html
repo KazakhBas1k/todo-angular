@@ -1,0 +1,7 @@
+<div class="info-container">
+  <p><span>Title:</span>  {{item.title}}</p>
+  <p><span>Priority:</span> {{item.priority}}</p>
+  <p><span>Status:</span> {{item.status ? "Completed" : "In progress"}}</p>
+  <p><span>Created:</span> {{item.createdDate | date: "mediumDate"}}, {{item.createdDate | date : "shortTime"}}</p>
+  <p><span>Deadline:</span> {{item.deadline | date: "mediumDate"}}, {{item.deadline | date: "shortTime"}}</p>
+</div>

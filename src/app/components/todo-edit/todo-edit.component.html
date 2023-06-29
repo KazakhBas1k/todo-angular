@@ -1,38 +1,29 @@
-<div class="wrapper">
-  <div class="edit-container">
-    <div class="edit-top">
-      <div class="item-counter"><h2>ToDo</h2>
-        <ng-content></ng-content></div>
-      <button (click)="close()"><img src="assets/svg/close.svg"></button>
-    </div>
-    <div class="add-form">
-      <input
-        type="text"
-        placeholder="Title"
-        [(ngModel)]="newItem.title"
-        (change)="onChange()"
-        #input
-      >
-      <select
-        required
-        [(ngModel)]="newItem.priority"
-        (change)="onChange()"
-      >
-        <option value="" disabled selected>Category</option>
-        <option value="High">High</option>
-        <option value="Medium">Medium</option>
-        <option value="Low">Low</option>
-      </select>
-      <select
-        required
-        [(ngModel)]="newItem.status"
-        (change)="onChange()"
-      >
-        <option value="" disabled selected>Status</option>
-        <option [ngValue]="false">Not Done</option>
-        <option [ngValue]="true">Done</option>
-      </select>
-      <button (click)="changeItem()">Change</button>
-    </div>
-  </div>
+<div class="edit-container">
+  <input
+    type="text"
+    placeholder="Title"
+    [(ngModel)]="newItem.title"
+    (change)="onChange()"
+    #input
+  >
+  <select
+    required
+    [(ngModel)]="newItem.priority"
+    (change)="onChange()"
+  >
+    <option value="" disabled selected>Category</option>
+    <option value="High">High</option>
+    <option value="Medium">Medium</option>
+    <option value="Low">Low</option>
+  </select>
+  <select
+    required
+    [(ngModel)]="newItem.status"
+    (change)="onChange()"
+  >
+    <option value="" disabled selected>Status</option>
+    <option [ngValue]="false">Not Done</option>
+    <option [ngValue]="true">Done</option>
+  </select>
+  <button (click)="changeItem()">Change</button>
 </div>

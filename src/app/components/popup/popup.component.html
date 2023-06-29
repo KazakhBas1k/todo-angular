@@ -1,0 +1,22 @@
+<div class="wrapper">
+  <div class="popup-container">
+    <div class="popup-top">
+      <div class="top-info">
+        <h2>ToDo</h2>
+        <p
+          *ngIf="id"
+          [ngStyle]="{
+          fontFamily: 'Exo 2',
+          fontWeight: '700',
+          fontSize: '20px',
+          lineHeight: '32px',
+        }"
+        >#{{id}}</p>
+      </div>
+      <button (click)="close()"><img src="assets/svg/close.svg"></button>
+    </div>
+    <div class="popup-bottom">
+      <ng-content></ng-content>
+    </div>
+  </div>
+</div>

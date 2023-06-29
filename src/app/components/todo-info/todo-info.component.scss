@@ -1,0 +1,18 @@
+.info-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  p {
+    font-family: "Exo 2";
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 32px;
+    color: #70796e;
+
+    span {
+      font-weight: 800;
+      color: #000;
+    }
+  }
+}

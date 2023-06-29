@@ -7,12 +7,15 @@
       (onDelete)="deleteItem($event)"
     ></app-todo-list-item>
   </div>
-  <app-todo-add
-    *ngIf="isAddOpen"
-    (onClose)="toggleAdd()"
-    (onAdd)="updateItems($event)"
-    [lastId] = "items.length + 1"
-  >
-  </app-todo-add>
+    <app-popup
+      *ngIf="isAddOpen"
+      (onClose)="toggleAdd()"
+    >
+      <app-todo-add
+        (onClose)="toggleAdd()"
+        (onAdd)="updateItems($event)"
+        [lastId] = "items.length + 1"
+      ></app-todo-add>
+    </app-popup>
   <button (click)="toggleAdd()" class="add-btn"><img src="assets/svg/add.svg"></button>
 </div>

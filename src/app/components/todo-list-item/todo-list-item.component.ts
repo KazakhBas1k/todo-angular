@@ -10,7 +10,11 @@ export class TodoListItemComponent {
   @Input() item!: ToDoItem
   @Output() onDelete: EventEmitter<number> = new EventEmitter<number>()
   isEditOpen: boolean = false;
+  isInfoOpen: boolean = false;
 
+  infoToggle() {
+    this.isInfoOpen = !this.isInfoOpen;
+  }
   updateItem(newItem: ToDoItem) {
     this.item = newItem
   }
@@ -20,4 +24,6 @@ export class TodoListItemComponent {
   toggleEdit() {
     this.isEditOpen = !this.isEditOpen
   }
+
+  protected readonly Number = Number;
 }
